@@ -1,0 +1,18 @@
+- name: installing rabbitmq component
+  hosts: rabbitmq
+  become: yes
+  tasks:
+    - name : installing rabbitmq repo
+      ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
+      ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+
+    - name : installing rabbitmq-server
+      ansible.builtin.yum:
+        name: rabbitmq-server
+        state: installed
+
+    - name: enabling and starting
+      ansible.builtin.service:
+        name: rabbitmq-server
+        state: started
+        enabled: yes 
