@@ -16,7 +16,7 @@
       ansible.builtin.service:
         name: mongodb
         state: started
-        enable: yes
+        enabled: yes
 
     - name: replacing ip
       ansible.builtin.replace:  
