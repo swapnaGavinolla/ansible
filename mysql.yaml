@@ -1,0 +1,24 @@
+- name: installing mysql component
+  hosts: mysql
+  become: yes
+  tasks:
+    - name : disabling mysql
+      ansible.builtin.commmand: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+
+    - name: copying mysql.repo
+      ansible.builtin.copy:
+        src: mysql.repo
+        dest: /etc/yum.repos.d/mysql.repo
+
+     - name : installing mysql-community-server
+      ansible.builtin.yum:
+        name: mysql-community-server
+        state: installed
+
+    - name: enabling and starting
+      ansible.builtin.service:
+        name: mysql-community-server
+        state: started
+        enabled: yes    
+
+    
