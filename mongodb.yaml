@@ -2,11 +2,10 @@
   hosts: mongodb
   become: yes
   tasks:
-
-   - name: copying mongo.repo
-     ansible.builtin.copy:
-     src: home/centos/ansible/mongo.repo
-     dest: /etc/yum.repos.d/mongo.repo
+  - name: copying mongo.repo
+    ansible.builtin.copy:
+    src: home/centos/ansible/mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
 
   - name : installing mongodb
     ansible.builtin.yum:
