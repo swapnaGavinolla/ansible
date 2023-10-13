@@ -3,11 +3,9 @@
   become: yes
   tasks:
     
-    - name : installing mysql
-      ansible.builtin.yum:
-        name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
-        state: installed
-        disable_gpg_check: true  
+    - name : disabling mysql
+      ansible.builtin.command: yum module disable mysql -y 
+      
 
     - name: copying mysql.repo
       ansible.builtin.copy:
