@@ -4,7 +4,7 @@
   tasks:
   - name: copying mongo.repo
     ansible.builtin.copy:
-    src: home/centos/ansible/mongo.repo
+    src: mongo.repo
     dest: /etc/yum.repos.d/mongo.repo
 
   - name : installing mongodb
