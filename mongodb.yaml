@@ -9,23 +9,23 @@
 
     - name : installing mongodb
       ansible.builtin.yum:
-      name: mongodb-org
-      state: installed
+        name: mongodb-org
+        state: installed
 
     - name: enabling and starting
       ansible.builtin.service:
-      state: started
-      enable: yes
+        state: started
+        enable: yes
 
     - name: replacing ip
       ansible.builtin.replace:  
-      path: /etc/mongod.conf
-      regexp: '127.0.0.1 '
-      replace: '0.0.0.0' 
+        path: /etc/mongod.conf
+        regexp: '127.0.0.1 '
+        replace: '0.0.0.0' 
 
     - name: enabling and starting
       ansible.builtin.service:
-      state: restarted  
+        state: restarted  
 
     
 
